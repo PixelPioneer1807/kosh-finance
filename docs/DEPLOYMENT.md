@@ -8,7 +8,7 @@ and branching for safe migration rehearsals.
 ## 1. Create the database
 
 1. Vercel dashboard → your project → **Storage** → **Create** → **Neon Postgres** (or create a project
-   at neon.tech directly). Pick the region closest to your Vercel functions region.
+   at neon.tech directly). Pick the region closest to your users and pin the Vercel functions to the same region via `"regions"` in `vercel.json`. This deployment uses Singapore (`sin1`) for both — the closest option to India, since the Vercel Neon integration has no Mumbai region.
 2. Neon gives you two connection strings:
    - **Pooled** (host contains `-pooler`) → use for `DATABASE_URL` (runtime).
    - **Direct** → use for `DATABASE_URL_UNPOOLED` (migrations only).
