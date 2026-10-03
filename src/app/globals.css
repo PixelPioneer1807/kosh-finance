@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Kosh design tokens.
+ * Neutral, warm-grey surfaces; ink-coloured primary actions; colour reserved for meaning
+ * (positive = income/progress, negative = overspend/destructive, warning = attention).
+ */
+:root {
+  --background: #fafaf9;
+  --foreground: #1c1917;
+  --card: #ffffff;
+  --card-foreground: #1c1917;
+  --popover: #ffffff;
+  --muted: #f3f2f0;
+  --muted-foreground: #6f6a65;
+  --subtle: #f7f6f4;
+  --border: #e8e5e1;
+  --border-strong: #d6d2cc;
+  --input: #e2dfda;
+  --ring: #1c1917;
+  --primary: #1c1917;
+  --primary-foreground: #fafaf9;
+  --accent: #0f766e;
+  --accent-foreground: #ffffff;
+  --accent-soft: #e6f4f1;
+  --positive: #047857;
+  --positive-soft: #e7f5ee;
+  --negative: #be123c;
+  --negative-soft: #fdecef;
+  --warning: #b45309;
+  --warning-soft: #fdf3e3;
+  --info: #1d4ed8;
+  --info-soft: #e9effd;
+  --shadow-color: 30 20 10;
+  --chart-grid: #ece9e5;
+  /* Validated categorical order (dataviz reference palette) — assign in order, never cycle. */
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
+  --series-7: #4a3aa7;
+  --series-8: #e34948;
+  --seq-200: #9ec5f4;
+  --seq-400: #3987e5;
+  --seq-600: #184f95;
+  --forecast: #8a8580;
+}
+
+.dark {
+  --background: #0c0c0d;
+  --foreground: #f2f1ef;
+  --card: #141415;
+  --card-foreground: #f2f1ef;
+  --popover: #18181a;
+  --muted: #1d1d1f;
+  --muted-foreground: #a09b95;
+  --subtle: #111112;
+  --border: #262628;
+  --border-strong: #35353a;
+  --input: #2e2e32;
+  --ring: #e7e5e2;
+  --primary: #f2f1ef;
+  --primary-foreground: #141415;
+  --accent: #2dd4bf;
+  --accent-foreground: #04231f;
+  --accent-soft: #0d2a27;
+  --positive: #34d399;
+  --positive-soft: #0f2a20;
+  --negative: #fb7185;
+  --negative-soft: #2f1219;
+  --warning: #fbbf24;
+  --warning-soft: #2c210b;
+  --info: #93b4ff;
+  --info-soft: #141f3a;
+  --shadow-color: 0 0 0;
+  --chart-grid: #232326;
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
+  --series-7: #9085e9;
+  --series-8: #e66767;
+  --seq-200: #184f95;
+  --seq-400: #3987e5;
+  --seq-600: #9ec5f4;
+  --forecast: #77736e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-subtle: var(--subtle);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-soft: var(--accent-soft);
+  --color-positive: var(--positive);
+  --color-positive-soft: var(--positive-soft);
+  --color-negative: var(--negative);
+  --color-negative-soft: var(--negative-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --shadow-xs: 0 1px 2px rgb(var(--shadow-color) / 0.05);
+  --shadow-sm: 0 1px 2px rgb(var(--shadow-color) / 0.06), 0 1px 3px rgb(var(--shadow-color) / 0.04);
+  --shadow-md: 0 4px 12px -2px rgb(var(--shadow-color) / 0.08), 0 2px 4px -2px rgb(var(--shadow-color) / 0.05);
+  --shadow-lg: 0 16px 40px -12px rgb(var(--shadow-color) / 0.22), 0 4px 12px -4px rgb(var(--shadow-color) / 0.08);
+  --animate-in: kosh-in 160ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --animate-sheet-up: kosh-sheet-up 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes kosh-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.985);
+  }
+}
+@keyframes kosh-sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+@keyframes kosh-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+  }
+  /* Grid children may shrink below their content width (prevents long text blowing out mobile layouts).
+     :where() keeps specificity at zero so explicit min-w-* utilities still win. */
+  :where(.grid) > * {
+    min-width: 0;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--accent) 25%, transparent);
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  .dark input[type="date"]::-webkit-calendar-picker-indicator,
+  .dark input[type="time"]::-webkit-calendar-picker-indicator,
+  .dark input[type="month"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
+
+@utility num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum", "cv11";
+  letter-spacing: -0.01em;
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+}
